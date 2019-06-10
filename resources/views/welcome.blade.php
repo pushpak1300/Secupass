@@ -14,8 +14,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-color: #343a40;
+                color: #f8f9fa;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -53,7 +53,7 @@
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
-                font-size: 13px;
+                font-size: 18px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -91,7 +91,10 @@
                 </div>
 
                 <div class="links">
-                <a href="https://github.com/pushpak1300/Securus" target="_blank">GitHub</a>
+                <a href="https://github.com/pushpak1300/Securus" target="_blank">
+                    <i class="fab fa-github"></i>
+                        <b>GitHub</b>
+                    </a>
                 </div>
             </div>
         </div>
