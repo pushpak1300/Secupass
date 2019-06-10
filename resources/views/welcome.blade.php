@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://github.com/">GitHub</a>
+                    <a href="https://github.com/pushpak1300/Securus">GitHub</a>
                 </div>
             </div>
         </div>
