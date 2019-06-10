@@ -7,6 +7,8 @@
         <title>Securus</title>
 
         <!-- Fonts -->
+        <script src="https://kit.fontawesome.com/ac0330eb2d.js"></script>
+
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
@@ -81,6 +83,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
+                    <i class="fas fa-shield-alt"></i>
                     Securus
                 </div>
                 <div>
