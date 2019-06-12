@@ -15,7 +15,7 @@
         <style>
             html, body {
                 background-color: #343a40;
-                color: #f8f9fa;
+                color:; #f8f9fa
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -58,6 +58,10 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+            
+            }
+            .links:hover,a:hover{
+                font-weight: bolder;
             }
 
             .m-b-md {
