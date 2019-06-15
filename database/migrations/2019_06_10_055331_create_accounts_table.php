@@ -15,10 +15,10 @@ class CreateAccountsTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->bigIncrements('account_id');
-            $table->string('name');
-            $table->string('url');
-            $table->string('username');
-            $table->string('password');
+            $table->string('title');
+            $table->string('link');
+            $table->string('login_id');
+            $table->string('login_password');
             $table->string('comment');
             $table->unsignedBigInteger('owner_id');
             $table->timestamps();

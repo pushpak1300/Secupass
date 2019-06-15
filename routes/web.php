@@ -11,4 +11,5 @@
 |
 */
 Route::get('/','applicationcontroller@home');
+Route::get('/dashboard', 'applicationcontroller@dashboard');
 Route::resource('accounts', 'AccountsController');

@@ -35,7 +35,17 @@ class AccountsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $account=new accounts;
+        $account->title=$request['title'];
+        $account->link = $request['link'];
+        $account->login_id = $request['login_id'];
+        $account->login_password = $request['login_password'];
+        $account->comment = $request['comment'];
+        $account->owner_id=0;
+        $account->save();
+        
+        // accounts::create(request(['title','link','login_id','login_password','comment',]));//route model bindings
+        return redirect('accounts');
     }
 
     /**
@@ -44,9 +54,9 @@ class AccountsController extends Controller
      * @param  \App\accounts  $accounts
      * @return \Illuminate\Http\Response
      */
-    public function show(accounts $accounts)
+    public function show( accounts $account)
     {
-        //
+        return view('accounts.accountview',compact('account'));
     }
 
     /**
@@ -57,7 +67,6 @@ class AccountsController extends Controller
      */
     public function edit(accounts $accounts)
     {
-        //
     }
 
     /**
@@ -67,9 +76,17 @@ class AccountsController extends Controller
      * @param  \App\accounts  $accounts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, accounts $accounts)
+    public function update(Request $request, accounts $account)
     {
-        //
+        $account->title = $request['title'];
+        $account->link = $request['link'];
+        $account->login_id = $request['login_id'];
+        $account->login_password = $request['login_password'];
+        $account->comment = $request['additional_info'];
+        $account->owner_id = 0;
+        $account->save();
+        accounts::update(request(['title', 'link', 'login_id', 'login_password', 'comment',]));
+        return redirect('accounts/'.$account['account_id'].'');
     }
 
     /**
@@ -78,8 +95,9 @@ class AccountsController extends Controller
      * @param  \App\accounts  $accounts
      * @return \Illuminate\Http\Response
      */
-    public function destroy(accounts $accounts)
+    public function destroy( accounts $account)
     {
-        //
+        $account->delete();
+        return redirect('accounts');   
     }
 }

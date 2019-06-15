@@ -9,7 +9,7 @@
 </style>
 @endpush
 
-@section('title','Accounts')
+@section('title','Create Accounts')
 
 @section('content')
 <div class="container-fluid mt--3">
@@ -95,7 +95,7 @@
 				                    <div class="input-group-prepend">
 				                        <span class="input-group-text"><i class="ni ni-support-16"></i></span>
 				                    </div>
-				                    <input class="form-control" placeholder="Additional Info" type="text" name="additional_info" id="additional_info">
+				                    <input class="form-control" placeholder="Additional Info" type="text" name="comment" id="comment" required="">
 				                </div>
 				            </div>
 				            <div class="text-center">
@@ -112,15 +112,14 @@
 
 @push('js')
 <script>
-	$("#random").click(function(event) { 
-			$('#input').val("GeeksForGeeks"); 
-			var length = 8,
-        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*!",
-        retVal = "";
-    for (var i = 0, n = charset.length; i < length; ++i) {
-        retVal += charset.charAt(Math.floor(Math.random() * n));
+ $("#random").click(function(event) { 
+	var length = 8,
+    charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*!",
+    retVal = "";
+for (var i = 0, n = charset.length; i < length; ++i) {
+    retVal += charset.charAt(Math.floor(Math.random() * n));
     }
-	$('#new_login_password').val(retVal);
+$('#new_login_password').val(retVal);
 }); 
 
 </script>

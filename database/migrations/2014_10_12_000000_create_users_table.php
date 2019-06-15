@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('membership');//if membership is 0 then it is free.
             $table->rememberToken();
             $table->timestamps();
         });

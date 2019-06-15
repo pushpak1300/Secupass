@@ -89,19 +89,20 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link {{ Request::is('accounts') ? 'text-primary' : '' }}" href="{{url('accounts')}}">
-              <i class="ni ni-tv-2 {{ Request::is('accounts') ? 'text-primary' : '' }}"></i> Home
+            <a class="nav-link {{ Request::is('dashboard') ? 'text-primary' : '' }}" href="{{url('dashboard')}}">
+              <i class="ni ni-tv-2 {{ Request::is('dashboard') ? 'text-primary' : '' }}"></i> Home
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ Request::is('accounts/create') ? 'text-primary' : '' }}" href="{{url('accounts/create')}}">
-              <i class="fa fa-plus {{ Request::is('accounts/create') ? 'text-primary' : '' }}"></"></i>
+              <i class="fa fa-plus {{ Request::is('accounts/create') ? 'text-primary' : '' }}"></i>
                Add Account
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="./examples/tables.html">
-              <i class="ni ni-bullet-list-67 "></"></i> Accounts
+            <a class="nav-link {{ Request::is('accounts') ? 'text-primary' : '' }}" href="{{url('accounts')}}">
+              <i class="ni ni-bullet-list-67 {{ Request::is('accounts') ? 'text-primary' : '' }}"></i> 
+              Accounts
             </a>
           </li>
           <li class="nav-item">
