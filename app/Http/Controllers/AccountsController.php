@@ -35,6 +35,14 @@ class AccountsController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedaccount = $request->validate([
+            'title'=>['required','min:4'],
+            'link' =>['required','min:4'],
+            'login_id' => ['required','min:4'],
+            'login_password' => ['required','min:4'],
+            'comment' =>['required','min:4'],
+        ]);
+        $request=$validatedaccount;
         $account=new accounts;
         $account->title=$request['title'];
         $account->link = $request['link'];
@@ -78,14 +86,22 @@ class AccountsController extends Controller
      */
     public function update(Request $request, accounts $account)
     {
+        $validatedaccount = $request->validate([
+            'title' => ['required', 'min:4'],
+            'link' => ['required', 'min:4'],
+            'login_id' => ['required', 'min:4'],
+            'login_password' => ['required', 'min:4'],
+            'comment' => ['required', 'min:4'],
+        ]);
+        $request = $validatedaccount;
         $account->title = $request['title'];
         $account->link = $request['link'];
         $account->login_id = $request['login_id'];
         $account->login_password = $request['login_password'];
-        $account->comment = $request['additional_info'];
+        $account->comment = $request['comment'];
         $account->owner_id = 0;
         $account->save();
-        accounts::update(request(['title', 'link', 'login_id', 'login_password', 'comment',]));
+        // accounts::update(request(['title', 'link', 'login_id', 'login_password', 'comment',]));
         return redirect('accounts/'.$account['account_id'].'');
     }
 

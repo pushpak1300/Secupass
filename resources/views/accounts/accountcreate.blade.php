@@ -30,7 +30,7 @@
 
 
 
-<div class="modal fade" id="add-account" tabindex="-1" role="dialog" aria-labelledby="modal-form" style="display: none;" aria-hidden="true">
+<div class="modal" id="add-account" tabindex="-1" role="dialog" aria-labelledby="modal-form" style="display: none;" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
     	<div class="modal-content">
         	<div class="modal-body p-0">
@@ -38,7 +38,8 @@
 				    <div class="card-body px-lg-5 py-lg-5">
 				        <div class="text-center mb-4">
 				            <small>Add Account Vault</small>
-				        </div>
+						</div>
+						@include('layouts.error')
 				        <form role="form" method="POST" action="/accounts">
 							@csrf
 
@@ -47,7 +48,7 @@
 				                    <div class="input-group-prepend">
 				                        <span class="input-group-text"><i class="ni ni-bold"></i></span>
 				                    </div>
-				                    <input class="form-control" placeholder="Title" type="text" name="title" id="title" required="">
+				                    <input class="form-control" placeholder="Title" type="text" name="title" id="title" value="{{old('title')}}" required="">
 				                </div>
 				            </div>
 				            {{-- <div class="form-group mb-3">
@@ -70,7 +71,7 @@
 				                    <div class="input-group-prepend">
 				                        <span class="input-group-text"><i class="fas fa-link"></i></span>
 				                    </div>
-				                    <input class="form-control" placeholder="Link" type="text" name="link" id="link">
+				                    <input class="form-control" placeholder="Link" type="text" name="link" value="{{old('link')}}" id="link">
 				                </div>
 				            </div>
 				            <div class="form-group mb-3">
@@ -78,7 +79,7 @@
 				                    <div class="input-group-prepend">
 				                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
 				                    </div>
-				                    <input class="form-control" placeholder="Account Login ID" type="text" name="login_id" id="login_id" required="">
+				                    <input class="form-control" placeholder="Account Login ID" type="text" name="login_id" id="login_id" value="{{old('login_id')}}" required="">
 				                </div>
 				            </div>
 				            <div class="form-group">
@@ -86,7 +87,7 @@
 				                    <div class="input-group-prepend">
 				                        <span class="input-group-text"><i class="ni ni-key-25"></i></span>
 				                    </div>
-				                    <input class="form-control" placeholder="Account Login Password" type="text" name="login_password" id="new_login_password" required=""> 
+								<input class="form-control" placeholder="Account Login Password" type="text" name="login_password" value="{{old('login_password')}}" id="new_login_password" required=""> 
 				                    <button type="button" class="btn btn-sm random"  name="random" id="random">Generate</button>
 				                </div> 
 				            </div>
@@ -95,7 +96,7 @@
 				                    <div class="input-group-prepend">
 				                        <span class="input-group-text"><i class="ni ni-support-16"></i></span>
 				                    </div>
-				                    <input class="form-control" placeholder="Additional Info" type="text" name="comment" id="comment" required="">
+				                    <input class="form-control" placeholder="Additional Info" type="text" name="comment" value="{{old('comment')}}" id="comment" required="">
 				                </div>
 				            </div>
 				            <div class="text-center">
@@ -123,5 +124,15 @@ $('#new_login_password').val(retVal);
 }); 
 
 </script>
+@if($errors->any())
+
+<script>
+
+$( document ).ready(function() {
+   $('#add-account').modal('show');
+});
+</script>
+
+@endif
 	
 @endpush

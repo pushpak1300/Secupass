@@ -6,6 +6,7 @@
     .nav-link{
         font-weight: bolder;
     }
+    
 </style>
 @endpush
 
@@ -15,9 +16,10 @@
     <div class="container-fluid mt--7">
       <div class="row">
     <div class="col-xl-12 order-xl-0">
+      
       <div class="card bg-secondary shadow pull-up">
         <div class="card-body">
-          <h6 class="heading-small text-muted mb-4">Account information</h6>
+          <h6 class="heading text-center mb-4">Account information</h6>
           <div class="pl-lg-4">
             <div class="row">
               <div class="col-lg-12">
@@ -30,12 +32,9 @@
                     <input type="text" id="link" name="link" class="form-control form-control-alternative" value="{{$account['link']}}" readonly="">
                     </div>
                     <div class="col-md-1">
-                      <a href="{{url($account['link'])}}" target="_blank" class="btn btn-warning btn-sm" >Open</a>
+                      <a href="http://{{$account['link']}}" target="_blank" class="btn btn-warning btn-sm" >Open</a>
                     </div>
                     &nbsp;
-                    <div class="col-md-1">
-                      <button type="button" class="btn btn-default btn-sm" name="btn" id="btn" data-clipboard-target="#link">Copy</button>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -49,7 +48,7 @@
                       <input type="text" id="login_id" name="login_id" class="form-control form-control-alternative" value="{{$account['login_id']}}" readonly="">
                     </div>
                     <div class="col-md-2">
-                      <button type="button" class="btn" name="btn" id="btn" data-clipboard-target="#login_id">Copy</button>
+                      <button type="button" class="btn" name="btn" id="btn" onclick="copyLogin()" data-container="body" data-toggle="popover" data-placement="top" data-content="Copied!">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -64,7 +63,7 @@
                       <input type="text" id="login_password" name="login_password" class="form-control form-control-alternative" value="{{$account['login_password']}}" readonly="">
                     </div>
                     <div class="col-md-2">
-                      <button type="button" class="btn" name="btn" id="btn" data-clipboard-target="#login_password">Copy</button>
+                      <button type="button" class="btn" name="btn" id="btn1" onclick="copyPassword()" data-container="body" data-toggle="popover" data-placement="top" data-content="Copied!">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -114,7 +113,8 @@
 				    <div class="card-body px-lg-5 py-lg-5">
 				        <div class="text-center mb-5">
 				            <b>Edit Account {{$account['title']}}</b>
-				        </div>
+                </div>
+                @include('layouts.error')
                     <form role="form" method="POST" action="/accounts/{{ $account->account_id }}">
                             @method('PATCH')
                             @csrf	
@@ -156,7 +156,7 @@
 				                    <div class="input-group-prepend">
 				                        <span class="input-group-text"><i class="ni ni-support-16"></i></span>
 				                    </div>
-				                    <input class="form-control" placeholder="Additional Info" type="text" name="additional_info" id="additional_info" value="{{$account['comment']}}">
+				                    <input class="form-control" placeholder="Additional Info" type="text" name="comment" id="comment" value="{{$account['comment']}}">
 				                </div>
 				            </div>
 				            <div class="text-center">
@@ -170,7 +170,7 @@
 	</div>
 </div><div class="modal fade" id="delete-account" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
     <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
-        <div class="modal-content bg-gradient-danger">
+        <div class="modal-content" >
             <div class="modal-header">
             <h3 class="modal-title" id="modal-title-notification">Warning! Attempting to delete:{{$account['title']}}</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -201,6 +201,17 @@
 
 @push('js')
 <script>  
+ function copylogin() {
+  var copyText = document.getElementById("login_id");
+  copyText.select();
+  document.execCommand("copy");
+}
+ function copyPassword() {
+  var copyText = document.getElementById("login_password");
+  copyText.select();
+  document.execCommand("copy");
+
+}
   $("#random").click(function(event) { 
 			var length = 8,
         charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*!",
@@ -212,4 +223,14 @@
 }); 
 
 </script>
+@if($errors->any())
+
+<script>
+
+$( document ).ready(function() {
+   $('#edit-account').modal('show');
+});
+</script>
+
+@endif
 @endpush
