@@ -201,7 +201,7 @@
 
 @push('js')
 <script>  
- function copylogin() {
+ function copyLogin() {
   var copyText = document.getElementById("login_id");
   copyText.select();
   document.execCommand("copy");
