@@ -28,8 +28,6 @@ class AppServiceProvider extends ServiceProvider
     {
         
         Schema::defaultStringLength(191);
-        $counts=accounts::count();
-        view()->share('counts', $counts);
 
     }
 }

@@ -11,5 +11,9 @@
 |
 */
 Route::get('/','applicationcontroller@home');
-Route::get('/dashboard', 'applicationcontroller@dashboard');
+Route::get('/dashboard', 'AccountsController@dashboard')->middleware('auth');
 Route::resource('accounts', 'AccountsController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

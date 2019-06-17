@@ -10,7 +10,4 @@ class applicationcontroller extends Controller
     {
         return view('welcome');
     }
-    public function dashboard(){
-        return view('accounts.dashboard');
-    }
 }

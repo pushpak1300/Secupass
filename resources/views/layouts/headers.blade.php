@@ -11,7 +11,7 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Accounts</h5>
-                    <span class="h2 font-weight-bold mb-0">{{$counts}}</span>
+                    <span class="h2 font-weight-bold mb-0">{{$accounts->count()}}</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -53,7 +53,7 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Membership</h5>
-                      <span class="h2 font-weight-bold mb-0">Free</span>
+                      <span class="h2 font-weight-bold mb-0">{{$user->membership==0?'Free':'Premium'}}</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
