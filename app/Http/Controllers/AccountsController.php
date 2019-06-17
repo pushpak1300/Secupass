@@ -71,7 +71,7 @@ class AccountsController extends Controller
     {
         $user = $this->currentuser();
         $accounts = $this->useraccounts();
-        $this->authorize('view',$accounts);
+        $this->authorize('view',$account);
         return view('accounts.accountview',compact(['account','user','accounts']));
     }
 
@@ -94,10 +94,12 @@ class AccountsController extends Controller
      */
     public function update(Request $request, accounts $account)
     {
+        $this->authorize('update', $account);
         $data = $this->validator($request);
         $data['owner_id'] = Auth::id();
-        $account =  accounts::update(data);
-        return redirect('accounts/'.$account['account_id'].'');
+        // dd($account->account_id);
+        $account =  accounts::find($account->account_id)->update($data);
+        return redirect()->back()->with('success','The accounts credentials has been updated.');
     }
 
     /**
@@ -108,6 +110,7 @@ class AccountsController extends Controller
      */
     public function destroy( accounts $account)
     {
+        $this->authorize('delete', $account);
         $account->delete();
         return redirect('accounts');   
     }

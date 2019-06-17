@@ -6,7 +6,7 @@ use App\User;
 use App\accounts;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class AccountPolicy
+class accountsPolicy
 {
     use HandlesAuthorization;
     
@@ -30,7 +30,7 @@ class AccountPolicy
      */
     public function view(User $user, accounts $accounts)
     {
-        return $accounts->owner_id==$user->id;
+        return $user->id === $accounts->owner_id;
     }
 
     /**
@@ -53,7 +53,7 @@ class AccountPolicy
      */
     public function update(User $user, accounts $accounts)
     {
-        //
+        return $user->id === $accounts->owner_id;
     }
 
     /**
@@ -65,7 +65,7 @@ class AccountPolicy
      */
     public function delete(User $user, accounts $accounts)
     {
-        //
+        return $user->id === $accounts->owner_id;
     }
 
     /**
