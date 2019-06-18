@@ -26,7 +26,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = $this->currentuser();
+        $accounts = $this->useraccounts();
+        return view('user.userprofile', compact(['user', 'accounts']));
     }
 
     /**
@@ -58,9 +60,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $user = $this->currentuser();
-        $accounts = $this->useraccounts();
-        return view('user.userprofile',compact(['user','accounts']));
+       
     }
 
     /**
@@ -81,9 +81,16 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request,$users)
     {
-        //
+        // $this->authorize('update', $user);
+        $data = $request->validate([
+            'username' => ['required', 'min:4'],
+            'email' => ['required', 'email'],
+        ]);
+        // dd($users);
+        $user =  User::find($users)->update($data);
+        return redirect()->back()->with('success', 'The user credentials has been updated.');
     }
 
     /**

@@ -26,7 +26,7 @@
             <div class=" dropdown-header noti-title">
               <h6 class="text-overflow m-0">Welcome!</h6>
             </div>
-            <a href="" class="dropdown-item">
+            <a href="{{url('User')}}" class="dropdown-item">
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
             </a>
@@ -92,8 +92,8 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/profile.html">
-              <i class="ni ni-single-02"></"></i> User profile
+            <a class="nav-link {{ Request::is('User') ? 'text-primary' : '' }}" href="{{url('User')}}">
+              <i class="ni ni-single-02 {{ Request::is('User') ? 'text-primary' : '' }}"></"></i> User profile
             </a>
           </li>
           
@@ -134,7 +134,7 @@
               <div class=" dropdown-header noti-title">
                 <h6 class="text-overflow m-0">Welcome!</h6>
               </div>
-              <a href="./examples/profile.html" class="dropdown-item">
+              <a href="{{url('User')}}" class="dropdown-item">
                 <i class="ni ni-single-02"></i>
                 <span>My profile</span>
               </a>

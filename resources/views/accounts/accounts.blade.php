@@ -19,7 +19,7 @@
   @foreach ($accounts as $account)
   <div class="col-md-6" style="margin-bottom: 25px">
         	<div class="card-dec">
-			  		<div class="card bg-secondary border-primary shadow pull-up"> 
+			  		<div class="card bg-secondary border-primary shadow"> 
 					    <div class="card-body">
 					      <h3>{{$account->title}}
                </h3>
@@ -27,7 +27,7 @@
 			    		<div class="card-footer">
                 <div class="row justify-content-md-center">
                 <button class="btn btn-primary" data-toggle="modal" data-target="#modal-view{{$account->account_id}}">Quick View</button>
-                    <button type="submit" href="" class="btn btn-warning pull-right">Account Details</button>
+				<a href="/accounts/{{$account->account_id}}" class="btn btn-primary ">Account Details</a>
                 </div>
 					    </div>
 			  		</div>
