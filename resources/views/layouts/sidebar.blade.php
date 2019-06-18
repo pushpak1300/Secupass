@@ -8,7 +8,7 @@
       <a class="navbar-brand pt-0" href="">
         <span style=" font-family: 'Nunito', sans-serif;color:; #f8f9fa;font-size=25px;">
           <i class="fas fa-shield-alt"></i>
-          Securus
+          Secupass
         </span>
       </a>
       <!-- User -->
@@ -50,7 +50,7 @@
             <div class="col-6 collapse-brand">
               <span class="text-center" style=" font-family: 'Nunito', sans-serif;font-size=35px; font-weight:bolder;">
                  <i class="fas fa-shield-alt"></i>
-                 Securus
+                 Secupass
         </span>
             </div>
             <div class="col-6 collapse-close">

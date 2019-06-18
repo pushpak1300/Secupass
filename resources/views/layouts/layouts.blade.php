@@ -7,7 +7,7 @@
   <meta name="description" content="Secure Password Manager Application Buit in Laravel.">
   <meta name="author" content="Creative Tim">
   <title>
-    @yield('title','Securus - Password Manager Application')
+    @yield('title','Secupass - Password Manager Application')
   </title>
   <!-- Favicon -->
   {{-- <link href="../../assets/img/brand/favicon.png" rel="icon" type="image/png"> --}}

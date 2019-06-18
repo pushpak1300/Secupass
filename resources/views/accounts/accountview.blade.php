@@ -10,7 +10,7 @@
 </style>
 @endpush
 
-@section('title','Securus')
+@section('title','Secupass')
 
 @section('content')
     <div class="container-fluid mt--7">
