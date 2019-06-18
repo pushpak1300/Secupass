@@ -10,7 +10,7 @@
 </style>
 @endpush
 
-@section('title','Securus')
+@section('title','Secupass')
 
 @section('content')
     <div class="container-fluid mt--7">
@@ -21,6 +21,13 @@
         <div class="card-body">
           <h6 class="heading text-center mb-4">Account information</h6>
           <div class="pl-lg-4">
+            @if (\Session::has('success'))
+                    <div class="alert alert-dark text-center">
+                      <ul>
+                        <li >{!! \Session::get('success') !!}</li>
+                      </ul>
+                    </div>
+                  @endif
             <div class="row">
               <div class="col-lg-12">
                 <div class="form-group">
@@ -114,7 +121,6 @@
 				        <div class="text-center mb-5">
 				            <b>Edit Account {{$account['title']}}</b>
                 </div>
-                @include('layouts.error')
                     <form role="form" method="POST" action="/accounts/{{ $account->account_id }}">
                             @method('PATCH')
                             @csrf	
@@ -201,7 +207,7 @@
 
 @push('js')
 <script>  
- function copylogin() {
+ function copyLogin() {
   var copyText = document.getElementById("login_id");
   copyText.select();
   document.execCommand("copy");

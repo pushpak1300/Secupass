@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Secure Password Manager Application Buit in Laravel.">
-  <meta name="author" content="Creative Tim">
+  <meta name="author" content="Pushpak Chhajed">
   <title>
     @yield('title','Secupass - Password Manager Application')
   </title>
@@ -25,10 +25,6 @@
   
 <body>
   @include('layouts.sidebar')
- 
-
-  @include('layouts.headers')
-
 
   @yield('content')
 

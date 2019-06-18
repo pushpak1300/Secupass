@@ -13,43 +13,86 @@
 
 @section('content')
 <div class="container-fluid mt--7">
-<div class="row">
-<div class="col-xl-12 mb-8 mb-xl-0">
-          <div class="card shadow">
-            <div class="card-header bg-transparent">
-              <div class="row align-items-center">
-                {{-- <div class="col">
-                  <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
-                  <h2 class="text-white mb-0">Sales value</h2>
-                </div>
-                <div class="col">
-                  <ul class="nav nav-pills justify-content-end">
-                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update="{&quot;data&quot;:{&quot;datasets&quot;:[{&quot;data&quot;:[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}" data-prefix="$" data-suffix="k">
-                      <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                        <span class="d-none d-md-block">Month</span>
-                        <span class="d-md-none">M</span>
-                      </a>
-                    </li>
-                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update="{&quot;data&quot;:{&quot;datasets&quot;:[{&quot;data&quot;:[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}" data-prefix="$" data-suffix="k">
-                      <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                        <span class="d-none d-md-block">Week</span>
-                        <span class="d-md-none">W</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div> --}}
-            
-            <div class="card-body">
-              <!-- Chart -->
-              <div class="chart"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                <!-- Chart wrapper -->
-                <canvas id="chart-sales" class="chart-canvas chartjs-render-monitor" style="display: block; width: 478px; height: 350px;" width="478" height="350"></canvas>
+ <div class="row mt-5">
+   <div class="col-xl-7 mb-7 mb-xl-0">
+    <div class="card shadow pull-up">
+      <div class="card-header border-0">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="mb-0">Quick Notes</h3>
+          </div>
+        </div>
+      </div> 
+      <div>
+        <div class="card-body bg-secondary">
+          <ul class="todo-list ui-sortable">
+            </ul>
+          </div>
+           <div class="card-footer">
+             <div class="form-group">
+               <input type="text" id="content" name="content" required="required" placeholder="Write a note &amp; press enter to save" class="form-control form-control">
               </div>
             </div>
           </div>
         </div>
+      </div>
+ <div class="col-xl-4">
+  <div class="card bg-secondary card-stats mb-4 mb-xl-0 pull-up">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <h5 class="card-title text-uppercase text-muted mb-0">Server Clock</h5>
+          <span class="h2 font-weight-bold mb-0"><span text-size="17" id="clock"></span></span>
+        </div>
+        <div class="col-auto">
+          <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+            <i class="fas fa-clock"></i>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <br/>
+  <div class="card bg-secondary card-stats mb-4 mb-xl-0 pull-up">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <h5 class="card-title text-uppercase text-muted mb-0">Last Login IP</h5>
+        <span class="h4 font-weight-bold mb-0"><a style="color:black" target="_blank" href="http://whatismyipaddress.com/ip/{{request()->ip()}}">{{ request()->ip()}}</a></span>
+        </div>
+        <div class="col-auto">
+          <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+            <i class="fas fa-server"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+</div> 
+</div>
 </div>
 @endsection
+
+@push('js')
+<script type="text/javascript">
+    function startTime() {
+        var today=new Date(),
+        curr_hour=today.getHours(),
+        curr_min=today.getMinutes(),
+        curr_sec=today.getSeconds();
+        curr_hour=checkTime(curr_hour);
+        curr_min=checkTime(curr_min);
+        curr_sec=checkTime(curr_sec);
+        document.getElementById('clock').innerHTML=curr_hour+":"+curr_min+":"+curr_sec;
+    }
+    function checkTime(i) {
+        if (i<10) {
+            i="0" + i;
+        }
+        return i;
+    }
+    setInterval(startTime, 500);
+</script>
+    
+@endpush

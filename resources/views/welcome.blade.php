@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Securus</title>
+        <title>Secupass</title>
 
         <!-- Fonts -->
         <script src="https://kit.fontawesome.com/ac0330eb2d.js"></script>
@@ -74,7 +74,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/dashboard') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -88,14 +88,14 @@
             <div class="content">
                 <div class="title m-b-md">
                     <i class="fas fa-shield-alt"></i>
-                    Securus
+                    Secupass
                 </div>
                 <div>
                    <h3> Password Manager Application</h3>
                 </div>
 
                 <div class="links">
-                <a href="https://github.com/pushpak1300/Securus" target="_blank">
+                <a href="https://github.com/pushpak1300/Secupass" target="_blank">
                     <i class="fab fa-github"></i>
                         <b>GitHub</b>
                     </a>

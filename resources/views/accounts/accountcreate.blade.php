@@ -2,10 +2,9 @@
 
 @push('css')
 <style>
-    
-    .nav-link{
+	.nav-link{
         font-weight: bolder;
-    }
+	}
 </style>
 @endpush
 
@@ -37,7 +36,7 @@
 				<div class="card bg-secondary shadow border-0">
 				    <div class="card-body px-lg-5 py-lg-5">
 				        <div class="text-center mb-4">
-				            <small>Add Account Vault</small>
+				            <small>Add Account To Vault</small>
 						</div>
 						@include('layouts.error')
 				        <form role="form" method="POST" action="/accounts">

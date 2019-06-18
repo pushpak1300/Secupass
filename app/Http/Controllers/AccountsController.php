@@ -4,17 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\accounts;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class AccountsController extends Controller
 {
+    /**
+     * This will create Authenticate to view any resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct()
+    {   
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-        return view('accounts.accounts');
+        $user = $this->currentuser();
+        $accounts=accounts::where('owner_id',auth()->id())->get();
+        return view('accounts.accounts',compact(['user','accounts']));
     }
 
     /**
@@ -23,8 +40,10 @@ class AccountsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('accounts.accountcreate');
+    {   
+        $user=$this->currentuser();
+        $accounts =$this->useraccounts() ;
+        return view('accounts.accountcreate', compact(['user','accounts']));
     }
 
     /**
@@ -35,24 +54,10 @@ class AccountsController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedaccount = $request->validate([
-            'title'=>['required','min:4'],
-            'link' =>['required','min:4'],
-            'login_id' => ['required','min:4'],
-            'login_password' => ['required','min:4'],
-            'comment' =>['required','min:4'],
-        ]);
-        $request=$validatedaccount;
-        $account=new accounts;
-        $account->title=$request['title'];
-        $account->link = $request['link'];
-        $account->login_id = $request['login_id'];
-        $account->login_password = $request['login_password'];
-        $account->comment = $request['comment'];
-        $account->owner_id=0;
-        $account->save();
         
-        // accounts::create(request(['title','link','login_id','login_password','comment',]));//route model bindings
+        $data = $this->validator($request);
+        $data['owner_id']=Auth::id();
+        $account=accounts::create($data);
         return redirect('accounts');
     }
 
@@ -64,7 +69,10 @@ class AccountsController extends Controller
      */
     public function show( accounts $account)
     {
-        return view('accounts.accountview',compact('account'));
+        $user = $this->currentuser();
+        $accounts = $this->useraccounts();
+        $this->authorize('view',$account);
+        return view('accounts.accountview',compact(['account','user','accounts']));
     }
 
     /**
@@ -86,23 +94,12 @@ class AccountsController extends Controller
      */
     public function update(Request $request, accounts $account)
     {
-        $validatedaccount = $request->validate([
-            'title' => ['required', 'min:4'],
-            'link' => ['required', 'min:4'],
-            'login_id' => ['required', 'min:4'],
-            'login_password' => ['required', 'min:4'],
-            'comment' => ['required', 'min:4'],
-        ]);
-        $request = $validatedaccount;
-        $account->title = $request['title'];
-        $account->link = $request['link'];
-        $account->login_id = $request['login_id'];
-        $account->login_password = $request['login_password'];
-        $account->comment = $request['comment'];
-        $account->owner_id = 0;
-        $account->save();
-        // accounts::update(request(['title', 'link', 'login_id', 'login_password', 'comment',]));
-        return redirect('accounts/'.$account['account_id'].'');
+        $this->authorize('update', $account);
+        $data = $this->validator($request);
+        $data['owner_id'] = Auth::id();
+        // dd($account->account_id);
+        $account =  accounts::find($account->account_id)->update($data);
+        return redirect()->back()->with('success','The accounts credentials has been updated.');
     }
 
     /**
@@ -113,7 +110,30 @@ class AccountsController extends Controller
      */
     public function destroy( accounts $account)
     {
+        $this->authorize('delete', $account);
         $account->delete();
         return redirect('accounts');   
+    }
+
+    public function dashboard()
+    {
+        $user = $this->currentuser();
+        $accounts = $this->useraccounts();
+        return view('accounts.dashboard', compact(['accounts', 'user']));
+    }
+    public function validator($request){
+        return $request->validate([
+            'title' => ['required', 'min:4'],
+            'link' => ['required', 'min:4'],
+            'login_id' => ['required', 'min:4'],
+            'login_password' => ['required', 'min:4'],
+            'comment' => ['required', 'min:4'],
+        ]);
+    }
+    public function currentuser(){
+        return Auth::user();
+    }
+    public function useraccounts(){
+        return accounts::where('owner_id', auth()->id())->get();
     }
 }
