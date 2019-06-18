@@ -25,10 +25,6 @@
   
 <body>
   @include('layouts.sidebar')
- 
-
-  @include('layouts.headers')
-
 
   @yield('content')
 

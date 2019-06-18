@@ -1,4 +1,14 @@
 @extends('layouts.app')
+@push('css')
+<style>
+.container{
+    color:#000000;
+}
+.card-body{
+    background-color: #f7f7f7;
+}
+</style>
+@endpush
 
 @section('content')
 <div class="container">
