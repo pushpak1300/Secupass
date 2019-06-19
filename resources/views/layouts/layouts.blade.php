@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Secure Password Manager Application Buit in Laravel.">
-  <meta name="author" content="Creative Tim">
+  <meta name="author" content='Pushpak Chhjed.'>
   <title>
-    @yield('title','Secupass - Password Manager Application')
+    @yield('title','Secupass|Password Manager Application')
   </title>
   <!-- Favicon -->
   {{-- <link href="../../assets/img/brand/favicon.png" rel="icon" type="image/png"> --}}
@@ -25,13 +25,8 @@
   
 <body>
   @include('layouts.sidebar')
- 
-
   @include('layouts.headers')
-
-
   @yield('content')
-
   @include('layouts.footers')
     
 <!-- Core -->
