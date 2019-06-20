@@ -57,9 +57,11 @@
         </div>
       </div>
       <!-- Form -->
-      <form class="mt-4 mb-3 d-md-none">
+      <form class="mt-4 mb-3 d-md-none"method="POST" action="/search">
+        @csrf
         <div class="input-group input-group-rounded input-group-merge">
-          <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
+          
+          <input type="sumbit" class="form-control form-control-rounded form-control-prepended" name="search" placeholder="Search" style="position: absolute; left: -9999px" aria-label="Search">
           <div class="input-group-prepend">
             <div class="input-group-text">
               <span class="fa fa-search"></span>

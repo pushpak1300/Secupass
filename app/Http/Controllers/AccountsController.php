@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\accounts;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Mail\accountcreated;
+use Illuminate\Support\Facades\Mail;
 
 class AccountsController extends Controller
 {
@@ -17,6 +19,7 @@ class AccountsController extends Controller
     public function __construct()
     {   
         $this->middleware('auth');
+        // $this->middlewear( 'verified');
     }
 
 
@@ -58,6 +61,7 @@ class AccountsController extends Controller
         $data = $this->validator($request);
         $data['owner_id']=Auth::id();
         $account=accounts::create($data);
+        Mail::to($account->owner->email)->send(new accountcreated($account));
         return redirect('accounts');
     }
 
@@ -75,15 +79,15 @@ class AccountsController extends Controller
         return view('accounts.accountview',compact(['account','user','accounts']));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\accounts  $accounts
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(accounts $accounts)
-    {
-    }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  \App\accounts  $accounts
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function edit(accounts $accounts)
+    // {
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -96,8 +100,7 @@ class AccountsController extends Controller
     {
         $this->authorize('update', $account);
         $data = $this->validator($request);
-        $data['owner_id'] = Auth::id();
-        // dd($account->account_id);
+        // $data['owner_id'] = Auth::id();
         $account =  accounts::find($account->account_id)->update($data);
         return redirect()->back()->with('success','The accounts credentials has been updated.');
     }
@@ -135,5 +138,12 @@ class AccountsController extends Controller
     }
     public function useraccounts(){
         return accounts::where('owner_id', auth()->id())->get();
+    }
+    public function search(Request $request)
+    {
+        $user = $this->currentuser();
+        $accounts = accounts::where('owner_id', auth()->id())->get();
+        $accounts=$accounts->where('name', 'like', '%' . $request->search . '%')->get();
+        return view('accounts.accounts', compact(['user', 'accounts']));
     }
 }

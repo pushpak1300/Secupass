@@ -29,7 +29,7 @@
                   <span class="description">Accounts</span>
                 </div>
                 <div>
-                  <span class="heading">{{$accounts->count()}}</span>
+                  <span class="heading">{{$user->tasks->count()}}</span>
                   <span class="description">Notes</span>
                 </div>
                 <div>
