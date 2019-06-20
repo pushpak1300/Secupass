@@ -85,8 +85,7 @@ class UserController extends Controller
     {
         // $this->authorize('update', $user);
         $data = $request->validate([
-            'username' => ['required', 'min:4'],
-            'email' => ['required', 'email'],
+            'username' => ['required', 'string', 'max:140', 'unique:users'],
         ]);
         // dd($users);
         $user =  User::find($users)->update($data);

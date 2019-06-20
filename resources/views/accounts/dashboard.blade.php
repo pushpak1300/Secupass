@@ -19,8 +19,6 @@
 </style>
 @endpush
 
-@section('title','Accounts')
-
 @section('content')
 <div class="container-fluid mt--7">
  <div class="row mt-5">

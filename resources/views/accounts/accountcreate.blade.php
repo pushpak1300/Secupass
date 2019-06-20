@@ -3,7 +3,7 @@
   .nav-link {
     font-weight: bolder;
   }
-</style> @endpush @section('title','Create Accounts') @section('content') <div class="container-fluid mt--3">
+</style> @endpush @section('content') <div class="container-fluid mt--3">
   <div class="row">
     <div class="col-sm">
     </div>
