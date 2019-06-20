@@ -37,14 +37,19 @@ class AccountsController extends Controller
     {
         $user = $this->currentuser();
         $accounts=accounts::where('owner_id',auth()->id())->get();
+        if($accounts->count()>0){
         foreach ($accounts as $account) {
             try {
                 $account['login_password'] = decrypt($account['login_password']);
             } catch (DecryptException $e) {
-                abort('404');
+                // 
             }
-            return view('accounts.accounts', compact(['user', 'accounts']));
         }
+     }
+        else{
+            //
+        }
+        return view('accounts.accounts', compact(['user', 'accounts']));
     }
 
     /**
@@ -90,7 +95,7 @@ class AccountsController extends Controller
         try {
             $account->login_password= decrypt( $account->login_password);
         } catch (DecryptException $e) {
-            abort('404');
+            //
         }
         return view('accounts.accountview',compact(['account','user','accounts']));
     }
@@ -144,7 +149,7 @@ class AccountsController extends Controller
             try {
                 $account['login_password'] = decrypt($account['login_password']);
             } catch (DecryptException $e) {
-                abort('404');
+            //
             }
         }
         return view('accounts.accounts', compact(['user', 'accounts']));
