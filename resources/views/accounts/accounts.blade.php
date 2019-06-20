@@ -2,7 +2,7 @@
   .nav-link {
     font-weight: bolder;
   }
-</style> @endpush @section('title','Accounts') @section('content') <div class="container-fluid mt--6">
+</style> @endpush  @section('content') <div class="container-fluid mt--6">
   <div class="row">
     <div class="col-xl-12 mb-8 mb-xl-0">
       <div class="row"> @foreach ($accounts as $account) <div class="col-md-6" style="margin-bottom: 25px">

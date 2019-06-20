@@ -5,8 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Secupass</title>
+  <link href="{{ asset('assets') }}/favicon.svg" rel="icon" type="image/svg">
+
   <!-- Fonts -->
-  <script src="https://kit.fontawesome.com/ac0330eb2d.js"></script>
+ <link href="{{ asset('assets') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
   <!-- Styles -->
   <style>

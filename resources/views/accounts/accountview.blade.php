@@ -2,7 +2,7 @@
   .nav-link {
     font-weight: bolder;
   }
-</style> @endpush @section('title','Secupass') @section('content') <div class="container-fluid mt--7">
+</style> @endpush  @section('content') <div class="container-fluid mt--7">
   <div class="row">
     <div class="col-xl-12 order-xl-0">
       <div class="card bg-secondary shadow pull-up">

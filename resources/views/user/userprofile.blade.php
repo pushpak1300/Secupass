@@ -75,7 +75,6 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-email">Email address</label>
-                    <input type="email" id="email" name="email" class="form-control form-control-alternative" value="{{$user->email}}" required>
                   </div>
                 </div>
                 <div class="row">

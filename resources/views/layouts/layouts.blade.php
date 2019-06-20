@@ -7,10 +7,10 @@
   <meta name="description" content="Secure Password Manager Application Buit in Laravel.">
   <meta name="author" content='Pushpak Chhjed.'>
   <title>
-    @yield('title','Secupass|Password Manager Application')
+    @yield('title','Secupass - Password Manager Application')
   </title>
   <!-- Favicon -->
-  {{-- <link href="../../assets/img/brand/favicon.png" rel="icon" type="image/png"> --}}
+  <link href="{{ asset('assets') }}/favicon.svg" rel="icon" type="image/svg">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- Icons -->
