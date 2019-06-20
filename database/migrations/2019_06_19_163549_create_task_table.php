@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAccountsTable extends Migration
+class CreateTaskTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
-            $table->bigIncrements('account_id');
-            $table->string('title');
-            $table->string('link');
-            $table->string('login_id');
-            $table->string('login_password','255');
-            $table->string('comment')->nullable();
+        Schema::create('tasks', function (Blueprint $table) {
+            $table->bigIncrements('task_id');
+            $table->string('data');
             $table->unsignedBigInteger('owner_id');
             $table->timestamps();
         });
@@ -32,6 +28,6 @@ class CreateAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists('tasks');
     }
 }

@@ -6,6 +6,16 @@
     .nav-link{
         font-weight: bolder;
     }
+    .todo-list > li {
+        border-radius: 2px;
+        padding: 10px;
+        background: #f4f4f4;
+        border-left: 2px solid #e6e7e8;
+        color: #444;
+        list-style: none;
+        margin: 1px;
+}
+    }
 </style>
 @endpush
 
@@ -25,14 +35,35 @@
       </div> 
       <div>
         <div class="card-body bg-secondary">
+        @foreach ($user->tasks as $task)
+        
           <ul class="todo-list ui-sortable">
-            </ul>
-          </div>
+          <li id="task{{$task->task_id}}">
+              <div>
+                <span class="text-center"></span> 
+                <div class="tools">
+                  
+                  <form method="POST" action="task/{{$task->task_id}}">
+                    @csrf 
+                    @method('DELETE')
+                    <span class="pull-right">{{$task->data}}
+                    <button class="btn btn-primary float-right btn-sm" type="sumbit">Delete</button>
+                    </span>
+                    </form>
+                  </div>
+                </div>
+              </li>
+            </ul> @endforeach
+        </div>
+          <form method="POST" action="/task"> 
+            @csrf
            <div class="card-footer">
              <div class="form-group">
-               <input type="text" id="content" name="content" required="required" placeholder="Write a note &amp; press enter to save" class="form-control form-control">
+               <input type="text" id="content" name="data" required="required" placeholder="Write a note &amp; press Add to save" class="form-control form-control">
+               <button type="submit" class="btn btn-primaty text-center float-center">Add</button>
               </div>
             </div>
+          </form>
           </div>
         </div>
       </div>
