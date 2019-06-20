@@ -63,7 +63,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-support-16"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Additional Info" type="text" name="comment" value="{{old('comment')}}" id="comment" required="">
+                  <input class="form-control" placeholder="Additional Info" type="text" name="comment" value="{{old('comment')}}" id="comment">
                 </div>
               </div>
               <div class="text-center">

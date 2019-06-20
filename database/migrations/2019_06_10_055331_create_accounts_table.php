@@ -18,8 +18,8 @@ class CreateAccountsTable extends Migration
             $table->string('title');
             $table->string('link');
             $table->string('login_id');
-            $table->string('login_password');
-            $table->string('comment');
+            $table->string('login_password','255');
+            $table->string('comment')->nullable();
             $table->unsignedBigInteger('owner_id');
             $table->timestamps();
         });

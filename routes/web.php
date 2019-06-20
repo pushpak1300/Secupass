@@ -11,15 +11,15 @@
 |
 */
 Route::get('/','applicationcontroller@home');
-Route::get('/dashboard', 'AccountsController@dashboard')->middleware('auth');
+Route::get('/dashboard', 'AccountsController@dashboard')->middleware(['auth','verified']);
 Route::resource('accounts', 'AccountsController')->except([
     'edit'
-]);
+])->middleware('verified');
 Route::resource('task', 'TasksController')->only([
     'destroy', 'store'
-]);
+])->middleware('verified');
 Route::resource('User','UserController')->only([
     'index', 'update'
-]);
+])->middleware('verified');
 Route::post('/search', 'AccountsController@search')->middleware('auth');
 Auth::routes(['verify' => true]);

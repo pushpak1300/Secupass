@@ -61,14 +61,14 @@
         @csrf
         <div class="input-group input-group-rounded input-group-merge">
           
-          <input type="sumbit" class="form-control form-control-rounded form-control-prepended" name="search" placeholder="Search" style="position: absolute; left: -9999px" aria-label="Search">
+          <input type="sumbit" class="form-control form-control-rounded form-control-prepended" name="search" placeholder="Search" aria-label="Search">
           <div class="input-group-prepend">
             <div class="input-group-text">
               <span class="fa fa-search"></span>
             </div>
           </div>
         </div>
-      </form>
+      </form> 
       <!-- Navigation -->
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -97,16 +97,17 @@
   <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
     <div class="container-fluid">
       <!-- Form -->
-      <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+      <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto" method="POST" action="/search">
+        @csrf
         <div class="form-group mb-0">
           <div class="input-group input-group-alternative">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-search"></i></span>
             </div>
-            <input class="form-control" placeholder="Search" type="text">
+          <input type="sumbit" class="form-control form-control-rounded form-control-prepended" name="search" placeholder="Search" aria-label="Search">
           </div>
         </div>
-      </form>
+      </form> 
       <!-- User -->
       <ul class="navbar-nav align-items-center d-none d-md-flex">
         <li class="nav-item dropdown">
