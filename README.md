@@ -68,10 +68,6 @@ Features
 
 If you discover a security vulnerability within Secupass, please send an e-mail to Secupass at mail.secupass@gmail.com. All security vulnerabilities will be promptly addressed.
 
-## Credits
-* [pushpak1300](https://github.com/pushpak1300) 
-
-
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
