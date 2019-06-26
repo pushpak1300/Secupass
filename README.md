@@ -1,4 +1,5 @@
 ![Screenshot (35)](https://user-images.githubusercontent.com/31663512/59926599-43f9fb80-9458-11e9-9f9f-4ae0e07c1cc0.png)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/29ec5f8d9c464a8a95dd73b281686d3a)](https://www.codacy.com/app/pushpak1300/Secupass?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pushpak1300/Secupass&amp;utm_campaign=Badge_Grade)
 # Secupass -Password Manager Application 
 
 
