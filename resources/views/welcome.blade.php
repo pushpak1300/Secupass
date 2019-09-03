@@ -72,7 +72,7 @@
 </head>
 
 <body>
-  <div class="flex-center position-ref full-height"> @if (Route::has('login')) <div class="top-right links"> @auth <a href="{{ url('/dashboard') }}" style="font-size:15px;">Dashboard</a> @else <a href="{{ route('login') }}" style="font-size:15px;">Login</a> @if (Route::has('register')) <a href="{{ route('register') }}" style="font-size:15px;" >Register</a> @endif @endauth </div> @endif <div class="content">
+  <div class="flex-center position-ref full-height"> @if (Route::has('login')) <div class="top-right links"> @auth <a href="{{ url('/dashboard') }}" style="font-size:15px;">Dashboard</a> @else <a href="{{ route('login') }}" style="font-size:15px;color:#fff;">Login</a> @if (Route::has('register')) <a href="{{ route('register') }}" style="font-size:15px; color:#fff;" >Register</a> @endif @endauth </div> @endif <div class="content">
       <div class="title m-b-md">
         <i class="fas fa-shield-alt"></i> Secupass </div>
       <div>
