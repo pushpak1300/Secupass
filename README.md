@@ -3,6 +3,8 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pushpak1300/Secupass/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pushpak1300/Secupass/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/pushpak1300/Secupass/badges/build.png?b=master)](https://scrutinizer-ci.com/g/pushpak1300/Secupass/build-status/master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/pushpak1300/Secupass/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![MadeWithLaravel.com shield](https://madewithlaravel.com/storage/repo-shields/1523-shield.svg)](https://madewithlaravel.com/p/secupass/shield-link)
+
 # Secupass -Password Manager Application 
 
 
