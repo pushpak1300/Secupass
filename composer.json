@@ -13,7 +13,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "6.18.*",
         "laravel/tinker": "^1.0",
-         "robincsamuel/laravel-msg91": "dev-master"
+        "robincsamuel/laravel-msg91": "dev-master"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
